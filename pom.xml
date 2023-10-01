@@ -69,11 +69,11 @@
                         <version>5.4.0</version>
                     </dependency>
                 </dependencies>
-            <!--    <configuration>
-                    <includes>
-                        <include>com.ea.SpringStart.SpringStartApplication</include>
-                    </includes>
-                </configuration>-->
+                <!--    <configuration>
+                        <includes>
+                            <include>com.ea.SpringStart.SpringStartApplication</include>
+                        </includes>
+                    </configuration>-->
             </plugin>
         </plugins>
     </build>

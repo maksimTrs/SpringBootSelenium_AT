@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LogInTest extends SpringStartApplicationTests {
 
     @Test
-    public void contextLoadsTest() {
+    public void doLogInAsAdminTest() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
         loginPage.fillLogInUserNameAndPassword(appUser, appPass);
@@ -24,7 +24,7 @@ public class LogInTest extends SpringStartApplicationTests {
     }
 
     @Test
-    public void contextLoadsTest2() {
+    public void doLogInAsUserTest() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
         loginPage.fillLogInUserNameAndPassword(appUser2, appPass);

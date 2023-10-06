@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ErrorLogInTest extends SpringStartApplicationTests {
 
     @Test
-    public void contextLoadsTest() {
+    public void doLogInWithWrongPassTest() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
         loginPage.fillLogInUserNameAndPassword(appUser, appWrongPass);

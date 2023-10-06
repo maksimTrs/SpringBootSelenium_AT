@@ -3,12 +3,16 @@ package com.ea.SpringStart;
 
 import com.ea.SpringStart.pages.HomePage;
 import com.ea.SpringStart.pages.LoginPage;
+import com.ea.SpringStart.services.ScreenshotService;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.TestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.lang.reflect.Method;
 
 
 @SpringBootTest()
@@ -22,6 +26,9 @@ public class SpringStartApplicationTests {
     @Autowired
     @Lazy
     protected LoginPage loginPage;
+    @Autowired
+    @Lazy
+    ScreenshotService screenshotService;
 
     @Value("${app.url}")
     protected String appUrl;
@@ -41,7 +48,8 @@ public class SpringStartApplicationTests {
     protected String appWrongPass;
 
     @AfterEach
-    public void closeBrowser() {
+    public void closeBrowser(TestInfo testInfo) {
+        screenshotService.takeScreenShot(testInfo);
         homePage.close();
     }
 }

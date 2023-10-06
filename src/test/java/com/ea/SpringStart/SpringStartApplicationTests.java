@@ -33,6 +33,13 @@ public class SpringStartApplicationTests {
     @Value("${app.password}")
     protected String appPass;
 
+    @Value("${app.user2:user}")
+    protected String appUser2;
+
+
+    @Value("${app.wrongPassword}")
+    protected String appWrongPass;
+
     @AfterEach
     public void closeBrowser() {
         homePage.close();

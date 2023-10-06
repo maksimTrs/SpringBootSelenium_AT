@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @Execution(ExecutionMode.CONCURRENT)
-public class ChromeLogInTest extends SpringStartApplicationTests {
+public class LogInTest extends SpringStartApplicationTests {
 
     @Test
     public void contextLoadsTest() {
@@ -27,7 +27,7 @@ public class ChromeLogInTest extends SpringStartApplicationTests {
     public void contextLoadsTest2() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
-        loginPage.fillLogInUserNameAndPassword(appUser, appPass);
+        loginPage.fillLogInUserNameAndPassword(appUser2, appPass);
         loginPage.doLogIn();
 
         assertThat(homePage.assertLogIn()).isEqualTo("Log off");

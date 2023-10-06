@@ -9,16 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @Execution(ExecutionMode.CONCURRENT)
-public class FirefoxLogInTest extends SpringStartApplicationTests {
+public class ErrorLogInTest extends SpringStartApplicationTests {
 
     @Test
     public void contextLoadsTest() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
-        loginPage.fillLogInUserNameAndPassword(appUser, appPass);
+        loginPage.fillLogInUserNameAndPassword(appUser, appWrongPass);
         loginPage.doLogIn();
 
-        assertThat(homePage.assertLogIn()).isEqualTo("Log off");
+        assertThat(loginPage.getLogInErrorMsg()).contains("Invalid login");
 
         //homePage.close();
     }

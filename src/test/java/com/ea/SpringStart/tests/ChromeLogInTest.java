@@ -23,7 +23,7 @@ public class ChromeLogInTest extends SpringStartApplicationTests {
         homePage.close();
     }
 
-/*    @Test
+    @Test
     public void contextLoadsTest2() {
         homePage.openHomePage(appUrl);
         homePage.clickOnLoginBtn();
@@ -31,5 +31,7 @@ public class ChromeLogInTest extends SpringStartApplicationTests {
         loginPage.doLogIn();
 
         assertThat(homePage.assertLogIn()).isEqualTo("Log off");
-    }*/
+
+        homePage.close();
+    }
 }

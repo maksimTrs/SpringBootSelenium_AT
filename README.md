@@ -6,8 +6,10 @@
 
 OR with installed maven:
 
-`mvn clean test`
+`mvn clean test -Dbrowser=firefox`
 
 **run tests with profile:**
 
 `mvn clean test -Dspring.profiles.active=qa`
+
+`mvn clean test -Dspring.profiles.active=default -Dbrowser=firefox`

@@ -7,10 +7,12 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class HomePage extends BasePage {
 
@@ -43,5 +45,9 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(logOffBtn));
 
         return logOffBtn.getText();
+    }
+
+    public void close() {
+        this.driver.quit();
     }
 }

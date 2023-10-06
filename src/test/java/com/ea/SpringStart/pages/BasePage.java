@@ -11,7 +11,7 @@ public class BasePage {
 
     @Autowired
     //@Qualifier("getChromeDriver")
-    public WebDriver driver;
+    protected WebDriver driver;
 
     @PostConstruct
     public void initDriver() {

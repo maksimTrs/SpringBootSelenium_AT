@@ -1,5 +1,6 @@
 package com.ea.SpringStart.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -23,10 +24,18 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, xpath = "//a[text()='Log off']")
     public WebElement logOffBtn;
 
-    public LoginPage clickOnLoginBtn() {
+
+    public void openHomePage(String url) {
+        Class<? extends WebDriver> webDriverClass = driver.getClass();
+
+        this.driver.navigate().to(url);
+        System.out.println(">>> Open Home page via browser: " + webDriverClass.getSimpleName());
+        System.out.println(">>> In THREAD: " + Thread.currentThread().getName());
+    }
+
+    public void clickOnLoginBtn() {
         lnkLogin.click();
         System.out.println(">>> Click Login on Home page");
-        return new LoginPage();
     }
 
     public String assertLogIn() {

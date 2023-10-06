@@ -9,8 +9,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @Configuration
+@Lazy
 public class WebDriverFactory {
 
     @Bean
@@ -25,6 +27,7 @@ public class WebDriverFactory {
 
     @Bean
     @ConditionalOnProperty(name = "browser", havingValue = "firefox")
+    //@ConditionalOnMissingBean
     public WebDriver getFFChromeDriver() {
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();

@@ -26,11 +26,8 @@ public class LoginPage extends BasePage {
         txtPassword.sendKeys(password);
     }
 
-    public HomePage doLogIn() {
+    public void doLogIn() {
         btnLogin.submit();
         System.out.println(">>> Click Login Btn on LogIn page");
-        return new HomePage();
     }
-
-
 }

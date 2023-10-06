@@ -6,15 +6,20 @@ import com.ea.SpringStart.pages.LoginPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.test.context.ActiveProfiles;
 
 
 @SpringBootTest()
+@ActiveProfiles("")
 public class SpringStartApplicationTests {
 
     @Autowired
+    @Lazy
     protected HomePage homePage;
 
     @Autowired
+    @Lazy
     protected LoginPage loginPage;
 
     @Value("${app.url}")

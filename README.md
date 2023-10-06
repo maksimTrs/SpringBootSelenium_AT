@@ -7,3 +7,7 @@
 OR with installed maven:
 
 `mvn clean test`
+
+**run tests with profile:**
+
+`mvn clean test -Dspring.profiles.active=qa`

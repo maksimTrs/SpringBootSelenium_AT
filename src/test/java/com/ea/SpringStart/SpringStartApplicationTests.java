@@ -3,6 +3,7 @@ package com.ea.SpringStart;
 
 import com.ea.SpringStart.pages.HomePage;
 import com.ea.SpringStart.pages.LoginPage;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,4 +32,9 @@ public class SpringStartApplicationTests {
 
     @Value("${app.password}")
     protected String appPass;
+
+    @AfterEach
+    public void closeBrowser() {
+        homePage.close();
+    }
 }

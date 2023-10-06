@@ -20,6 +20,6 @@ public class FirefoxLogInTest extends SpringStartApplicationTests {
 
         assertThat(homePage.assertLogIn()).isEqualTo("Log off");
 
-        homePage.close();
+        //homePage.close();
     }
 }

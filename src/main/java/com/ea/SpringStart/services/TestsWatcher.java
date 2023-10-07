@@ -2,7 +2,6 @@ package com.ea.SpringStart.services;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.Optional;
 
 @Service
 @Lazy
-public class TestsWatcher  implements TestWatcher {
+public class TestsWatcher implements TestWatcher {
 
  /*   @Autowired
     @Lazy

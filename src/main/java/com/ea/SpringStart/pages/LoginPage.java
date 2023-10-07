@@ -1,5 +1,6 @@
 package com.ea.SpringStart.pages;
 
+import com.ea.SpringStart.annotations.TakeScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -31,11 +32,13 @@ public class LoginPage extends BasePage {
         txtPassword.sendKeys(password);
     }
 
+    @TakeScreenshot
     public void doLogIn() {
         btnLogin.submit();
         System.out.println(">>> Click Login Btn on LogIn page");
     }
 
+    //@TakeScreenshot
     public String getLogInErrorMsg() {
         wait.until(d -> logInErrorMsg.isDisplayed());
         return logInErrorMsg.getText();

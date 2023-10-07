@@ -1,8 +1,6 @@
 package com.ea.SpringStart.services;
 
 import io.qameta.allure.Attachment;
-import org.junit.jupiter.api.TestInfo;
-import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.util.FileCopyUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,10 +31,11 @@ public class ScreenshotService {
     private Path path;
 
 
-    public void takeScreenShot(TestInfo method)  {
+    public void takeScreenShot(String methodName) {
+
         File sourceFile = this.ctx.getBean(TakesScreenshot.class).getScreenshotAs(OutputType.FILE);
         try {
-            FileCopyUtils.copy(sourceFile, this.path.resolve(method.getDisplayName()
+            FileCopyUtils.copy(sourceFile, this.path.resolve(methodName
                     + "__"
                     + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_dd_MM_hh_mm_ss"))
                     + ".png").toFile());
@@ -47,7 +45,7 @@ public class ScreenshotService {
     }
 
     @Attachment(value = "Page Screenshot", type = "image/png")
-    public byte[] getScreenshot(){
+    public byte[] getScreenshot() {
         return this.ctx.getBean(TakesScreenshot.class).getScreenshotAs(OutputType.BYTES);
     }
 

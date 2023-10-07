@@ -1,9 +1,7 @@
 package com.ea.SpringStart.tests;
 
 import com.ea.SpringStart.SpringStartApplicationTests;
-import com.ea.SpringStart.services.TestsWatcher;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 

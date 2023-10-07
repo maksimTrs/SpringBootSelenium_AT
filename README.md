@@ -13,3 +13,8 @@ OR with installed maven:
 `mvn clean test -Dspring.profiles.active=qa`
 
 `mvn clean test -Dspring.profiles.active=default -Dbrowser=firefox`
+
+
+**run allure result**
+
+`mvn allure:serve`

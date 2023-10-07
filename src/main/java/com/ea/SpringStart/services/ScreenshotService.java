@@ -1,6 +1,8 @@
 package com.ea.SpringStart.services;
 
+import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +46,9 @@ public class ScreenshotService {
         }
     }
 
-  /*  public byte[] getScreenshot(){
+    @Attachment(value = "Page Screenshot", type = "image/png")
+    public byte[] getScreenshot(){
         return this.ctx.getBean(TakesScreenshot.class).getScreenshotAs(OutputType.BYTES);
-    }*/
+    }
 
 }

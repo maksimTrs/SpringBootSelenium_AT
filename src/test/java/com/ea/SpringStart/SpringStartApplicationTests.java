@@ -4,19 +4,26 @@ package com.ea.SpringStart;
 import com.ea.SpringStart.pages.HomePage;
 import com.ea.SpringStart.pages.LoginPage;
 import com.ea.SpringStart.services.ScreenshotService;
+import com.ea.SpringStart.services.TestsWatcher;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.TestWatcher;
+import org.junit.platform.engine.EngineExecutionListener;
+import org.junit.platform.engine.TestExecutionResult;
+import org.junit.platform.launcher.listeners.TestExecutionSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.lang.reflect.Method;
 
 
 @SpringBootTest()
 @ActiveProfiles("")
+@ExtendWith(TestsWatcher.class)
 public class SpringStartApplicationTests {
 
     @Autowired
@@ -26,6 +33,7 @@ public class SpringStartApplicationTests {
     @Autowired
     @Lazy
     protected LoginPage loginPage;
+
     @Autowired
     @Lazy
     ScreenshotService screenshotService;
@@ -50,6 +58,7 @@ public class SpringStartApplicationTests {
     @AfterEach
     public void closeBrowser(TestInfo testInfo) {
         screenshotService.takeScreenShot(testInfo);
+        screenshotService.getScreenshot();
         homePage.close();
     }
 }

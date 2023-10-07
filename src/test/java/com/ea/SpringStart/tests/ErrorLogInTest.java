@@ -1,7 +1,9 @@
 package com.ea.SpringStart.tests;
 
 import com.ea.SpringStart.SpringStartApplicationTests;
+import com.ea.SpringStart.services.TestsWatcher;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
@@ -18,7 +20,7 @@ public class ErrorLogInTest extends SpringStartApplicationTests {
         loginPage.fillLogInUserNameAndPassword(appUser, appWrongPass);
         loginPage.doLogIn();
 
-        assertThat(loginPage.getLogInErrorMsg()).contains("Invalid login");
+        assertThat(loginPage.getLogInErrorMsg()).contains("Invalid login111111111");
 
         //homePage.close();
     }

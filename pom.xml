@@ -15,9 +15,12 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>5.5.3</webdrivermanager.version>
+        <aspectj.version>1.9.19</aspectj.version>
     </properties>
 
     <dependencies>
@@ -49,6 +52,15 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.13.10</version> <!-- Check for the latest version -->
+<!--            <scope>test</scope>-->
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -73,6 +85,10 @@
                     <includes>
                         <include>*Test*</include>
                     </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                    </argLine>
                 </configuration>
                 <!--    <configuration>
                         <includes>
@@ -80,6 +96,15 @@
                         </includes>
                     </configuration>-->
             </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>2.14.0</reportVersion>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

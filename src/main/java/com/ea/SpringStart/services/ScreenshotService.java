@@ -39,7 +39,7 @@ public class ScreenshotService {
         try {
             FileCopyUtils.copy(sourceFile, this.path.resolve(methodName
                     + "__"
-                    + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_dd_MM_hh_mm_ss"))
+                    + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_dd_MM_hh_mm_ss_SSS"))
                     + ".png").toFile());
 
             LOGGER.info("<<< ScreenShot file was created!!!  >>>");

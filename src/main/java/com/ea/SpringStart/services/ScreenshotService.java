@@ -41,6 +41,8 @@ public class ScreenshotService {
                     + "__"
                     + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_dd_MM_hh_mm_ss"))
                     + ".png").toFile());
+
+            LOGGER.info("<<< ScreenShot file was created!!!  >>>");
         } catch (IOException e) {
             //LOGGER.log(Level.WARNING, "<<< Error copying screenshot file: ", e + " >>>");
             LOGGER.info("<<< Error copying screenshot file: " +  e + " >>>");

@@ -17,13 +17,8 @@ script:
 
 after_success:
   - zip -r target.zip target
-  - curl --upload-file ./target.zip https://transfer.sh/target.zip
-  - export ZIP_URL=$(curl --upload-file ./target.zip https://transfer.sh/target.zip)
 
-notifications:
-  email:
-    on_success: change # default: change
-    on_failure: always # default: always
-template:
-  - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
-  - "Download the zip file here: ${ZIP_URL}"
+#notifications:
+#  email:
+#    on_success: change # default: change
+#    on_failure: always # default: always

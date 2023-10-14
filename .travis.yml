@@ -13,17 +13,22 @@ before_install:
 
 script:
   - ./mvnw clean test -Dbrowser=chrome
-  - ./mvnw allure:report
+  #- ./mvnw allure:report
+  - ./mvnw allure:serve
 
-
-
-after_script:
-  # Zip the Allure results and make it available as an artifact
-  - zip -r allure-results.zip allure-results
-  - mv allure-results.zip $TRAVIS_BUILD_DIR
-  - echo "Allure report https://example.com/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/artifacts/allure-results.zip"
 
 addons:
-  artifacts:
-    paths:
-      - $TRAVIS_BUILD_DIR/allure-results.zip
+  chrome: stable
+
+
+notifications:
+  email:
+#    recipients:
+#      - one@example.com
+#      - other@example.com
+    on_success: change # default: change
+    on_failure: always # default: always
+
+after_success:
+  - sleep 15  # Adjust the duration based on your needs (how long to wait for the server to start)
+  - pkill -f "allure serve"

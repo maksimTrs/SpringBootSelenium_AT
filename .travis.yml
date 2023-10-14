@@ -1,12 +1,8 @@
-sudo: required
 dist: trusty
 language: java
 jdk:
   - openjdk17
 
-#addons:
-#  chrome: stable   # Make sure to specify Chrome
-#  firefox: latest  # Specify Firefox if needed
 
 before_install:
   - chmod +x mvnw  # Make the Maven wrapper executable
@@ -17,8 +13,10 @@ script:
 
 after_success:
   - zip -r target.zip target
+  - export ZIP_URL=$(curl --upload-file ./target.zip https://transfer.sh/target.zip)
+  - echo "<<< Download the zip file here ${ZIP_URL} >>>"
 
-#notifications:
-#  email:
-#    on_success: change # default: change
-#    on_failure: always # default: always
+notifications:
+  email:
+    on_success: always # default: change
+    on_failure: always # default: always

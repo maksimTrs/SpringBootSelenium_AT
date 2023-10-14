@@ -14,12 +14,6 @@ before_install:
 script:
   - ./mvnw clean test -Dbrowser=chrome
   #- ./mvnw allure:report
-  - ./mvnw allure:serve
-
-
-addons:
-  chrome: stable
-
 
 notifications:
   email:
@@ -28,7 +22,3 @@ notifications:
 #      - other@example.com
     on_success: change # default: change
     on_failure: always # default: always
-
-after_success:
-  - sleep 15  # Adjust the duration based on your needs (how long to wait for the server to start)
-  - pkill -f "allure serve"

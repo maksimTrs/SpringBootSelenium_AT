@@ -20,7 +20,8 @@ public class WebDriverFactory {
     @Scope("browserscope")
     @ConditionalOnProperty(name = "browser", havingValue = "chrome")
     public WebDriver getChromeDriver() {
-        WebDriverManager.chromedriver().browserVersion("117.0.5938.132").setup();
+       // WebDriverManager.chromedriver().browserVersion("117.0.5938.132").setup();
+        WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("start-maximized");

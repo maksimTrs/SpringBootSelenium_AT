@@ -18,7 +18,7 @@ public class ErrorLogInTest extends SpringStartApplicationTests {
         loginPage.fillLogInUserNameAndPassword(appUser, appWrongPass);
         loginPage.doLogIn();
 
-        assertThat(loginPage.getLogInErrorMsg()).contains("Invalid login111111111");
+        assertThat(loginPage.getLogInErrorMsg()).contains("Invalid login");
 
         //homePage.close();
     }

@@ -4,13 +4,26 @@ language: java
 jdk:
   - openjdk17
 
+#addons:
+#  chrome: stable   # Make sure to specify Chrome
+#  firefox: latest  # Specify Firefox if needed
 
 before_install:
   - chmod +x mvnw  # Make the Maven wrapper executable
 
 script:
   - ./mvnw clean test -Dbrowser=chrome
-
-after_success:
   - ./mvnw allure:report
-  - ./mvnw allure:serve
+
+
+
+after_script:
+  # Zip the Allure results and make it available as an artifact
+  - zip -r allure-results.zip allure-results
+  - mv allure-results.zip $TRAVIS_BUILD_DIR
+  - echo "Allure report https://example.com/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/artifacts/allure-results.zip"
+
+addons:
+  artifacts:
+    paths:
+      - $TRAVIS_BUILD_DIR/allure-results.zip

@@ -1,0 +1,15 @@
+dist: trusty
+language: java
+jdk:
+  - openjdk17
+
+
+before_install:
+  - chmod +x mvnw  # Make the Maven wrapper executable
+
+script:
+  - ./mvnw clean test -Dbrowser=chrome
+
+after_success:
+  - ./mvnw allure:report
+  - ./mvnw allure:serve

@@ -23,8 +23,9 @@ public class WebDriverFactory {
         WebDriverManager.chromedriver().browserVersion("117.0.5938.132").setup();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("--incognito");
+        //options.addArguments("start-maximized");
+        //options.addArguments("--incognito");
+        options.addArguments("--headless");
         return new ChromeDriver(options);
     }
 

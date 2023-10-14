@@ -11,10 +11,12 @@ script:
   - ./mvnw clean test -Dbrowser=chrome
   - ./mvnw allure:report
 
+
 after_success:
   - zip -r target.zip target
-  - export ZIP_URL=$(curl --upload-file ./target.zip https://transfer.sh/target.zip)
+  - export ZIP_URL=$(curl -k --upload-file ./target.zip https://transfer.sh/target.zip)
   - echo "<<< Download the zip file here ${ZIP_URL} >>>"
+
 
 notifications:
   email:

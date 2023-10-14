@@ -13,12 +13,16 @@ before_install:
 
 script:
   - ./mvnw clean test -Dbrowser=chrome
-  #- ./mvnw allure:report
+  - ./mvnw allure:report
+
+before_deploy:
+  - zip -r target.zip target
+
+
 
 notifications:
   email:
-#    recipients:
-#      - one@example.com
-#      - other@example.com
+    recipients:
+      - roronoazorroippo@gmail.com
     on_success: change # default: change
     on_failure: always # default: always

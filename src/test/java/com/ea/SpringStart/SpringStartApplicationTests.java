@@ -3,6 +3,7 @@ package com.ea.SpringStart;
 
 import com.ea.SpringStart.pages.HomePage;
 import com.ea.SpringStart.pages.LoginPage;
+import com.ea.SpringStart.services.ScreenshotService;
 import com.ea.SpringStart.services.TestsWatcher;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.TestInfo;
@@ -27,9 +28,9 @@ public class SpringStartApplicationTests {
     @Lazy
     protected LoginPage loginPage;
 
-/*    @Autowired
+    @Autowired
     @Lazy
-    ScreenshotService screenshotService;*/
+    ScreenshotService screenshotService;
 
     @Value("${app.url}")
     protected String appUrl;
@@ -50,8 +51,8 @@ public class SpringStartApplicationTests {
 
     @AfterEach
     public void closeBrowser(TestInfo testInfo) {
-/*        screenshotService.takeScreenShot(testInfo);
-        screenshotService.getScreenshot();*/
+        screenshotService.takeScreenShot(testInfo.getDisplayName());
+        screenshotService.getScreenshot();
         homePage.close();
     }
 }
